@@ -5,12 +5,6 @@
   font-family: Arial, sans-serif;
 }
 
-body {
-  background: #f2f2f2;
-  padding: 20px;
-  color: #333;
-}
-
 header {
   text-align: center;
   margin-bottom: 30px;
@@ -19,41 +13,64 @@ header {
 h1 {
   font-size: 2.5rem;
   color: #2c3e50;
+  margin-bottom: 10px;
 }
 
 h2 {
-  margin-bottom: 10px;
   text-align: center;
+  font-size: 1.8rem;
+}
+
+
+.tech-column.old h2 {
+  color: #8D6E63;
+}
+
+.tech-column.modern h2 {
+  color: #00a896;
 }
 
 .poster {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 30px;
 }
 
 .tech-column {
   flex: 1;
-  min-width: 300px;
+  min-width: 600px;
+  max-width: 800px;
   background: #fff;
   border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  position: relative;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .image-container {
   position: relative;
   width: 100%;
-  height: auto;
-  overflow: hidden;
+  min-height: 650px;
+  min-width: 600px;
 }
 
-.image-container img {
+/* The main background image */
+.image-container>img:first-child {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 10px;
-  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.tech-column.old .image-container>img:first-child {
+  filter: sepia(80%) brightness(0.9);
+}
+
+.tech-column.modern .image-container>img:first-child {
+  filter: brightness(0.95);
 }
 
 @media (max-width: 768px) {
@@ -63,6 +80,24 @@ h2 {
   }
 
   .image-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    min-height: auto;
+  }
+
+  .image-container>img:first-child {
     position: static;
+    height: 150px;
+    width: 100%;
+    filter: sepia(80%) brightness(0.9);
+    /* Keep the filter on mobile */
+  }
+
+  .tech-column.modern .image-container>img:first-child {
+    filter: brightness(0.95);
+    /* Keep the modern filter too */
   }
 }
